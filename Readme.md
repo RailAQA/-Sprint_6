@@ -11,3 +11,6 @@
 - test_opening_drop_down_list[7]
 - test_succesful_order_flow[0]
 - test_succesful_order_flow[1]
+
+### Отчет о тестировании:
+/allure_results
