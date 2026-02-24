@@ -15,7 +15,7 @@ class BasePage:
             assert self.driver.current_url == url
 
     def get_locator(self, locator: tuple, nth: int = 0,):
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
+        self.wait_element_will_visible(locator=locator, timeout=5)
         with allure.step(f"Генерация WebElement по локатору: {locator} с индексом={nth}"):
             return self.driver.find_elements(*locator)[nth]
     

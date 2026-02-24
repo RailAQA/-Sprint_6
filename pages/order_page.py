@@ -28,6 +28,8 @@ class OrderPage(BasePage):
     SUCCESFUL_ORDER_FORM_TITTLE = (By.XPATH, '//div[@class="Order_ModalHeader__3FDaJ"]')
     CHECK_STATUS_BUTTON = (By.XPATH, '//button[text()="Посмотреть статус"]')
 
+    SAMOKAT_HEADER_LOGO = (By.XPATH, '//a[@class="Header_LogoScooter__3lsAR"]')
+
     @allure.step("Заполнение формы с пользовательскими данными самоката")
     def fill_samokat_form(self, name: str, last_name: str, address: str, phone: str):
         self.hide_cookie_banner()
@@ -97,3 +99,7 @@ class OrderPage(BasePage):
     @allure.step("Клик по кнопке 'Да' в форме аренды")
     def click_approve_order_button(self):
         self.click(locator=self.APPROVE_ORDER_BUTTON)
+
+    @allure.step("Клик по логотипу Самока в шапке")
+    def click_samokat_header_logo(self):
+        self.click(locator=self.SAMOKAT_HEADER_LOGO)

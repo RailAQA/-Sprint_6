@@ -12,6 +12,7 @@ class HomePage(BasePage):
 
     ORDER_BUTTON = (By.XPATH, '//button[text()="Заказать"]')
     YANDEX_HEADER_LOGO = (By.XPATH, '//a[@class="Header_LogoYandex__3TSOI"]')
+    
 
     @allure.step("Скролл к выпадающему списку")
     def scroll_to_drop_down_list(self, nth: int):
@@ -56,3 +57,5 @@ class HomePage(BasePage):
         self.driver.switch_to.window(all_windows[-1])
 
         self.wait_url_to_be(timeout=5, url="https://dzen.ru/?yredirect=true")
+
+    

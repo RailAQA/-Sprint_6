@@ -6,7 +6,6 @@ from tools.routes import AppRoute
 
 
 class TestHomePage:
-    @pytest.mark.testov
     @allure.title("Выпадающий список в разделе «Вопросы о важном».")
     @pytest.mark.parametrize("number", [i for i in range(0, 8)])
     def test_opening_drop_down_list(self, driver, number):
