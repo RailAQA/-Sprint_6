@@ -59,4 +59,13 @@ class BasePage:
 
             assert element.get_attribute("value") == text
 
-    
+    def wait_element_will_visible(self, locator: tuple, timeout: int):
+        WebDriverWait(self.driver, timeout=timeout).until(EC.visibility_of_element_located(locator))
+
+    def wait_url_to_be(self, timeout: int, url: str):
+        WebDriverWait(self.driver, timeout=timeout).until(
+    EC.url_to_be(url))
+
+    def wait_page_for_load(self, timeout: int):
+        WebDriverWait(self.driver, timeout=timeout).until(
+        lambda d: d.execute_script("return document.readyState") == "complete")

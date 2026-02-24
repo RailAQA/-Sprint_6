@@ -17,7 +17,8 @@ class HomePage(BasePage):
         self.hide_scooter_image()
         element = self.get_locator(locator=self.DROP_DOWN_LIST_VALUE_BUTTONS, nth=nth)
         self.scroll_to(locator=element)
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.DROP_DOWN_LIST_VALUE_BUTTONS))
+        #WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.DROP_DOWN_LIST_VALUE_BUTTONS))
+        self.wait_element_will_visible(locator=self.DROP_DOWN_LIST_VALUE_BUTTONS, timeout=5)
 
     def click_to_drop_down_list_value_button(self, nth: int):
         self.click(locator=self.DROP_DOWN_LIST_VALUE_BUTTONS, nth=nth)
@@ -53,8 +54,4 @@ class HomePage(BasePage):
         all_windows = self.driver.window_handles
         self.driver.switch_to.window(all_windows[-1])
 
-        WebDriverWait(self.driver, 10).until(
-        lambda d: d.execute_script("return document.readyState") == "complete")
-        WebDriverWait(self.driver, 10).until(
-    EC.url_to_be("https://dzen.ru/?yredirect=true")
-)
+        self.wait_url_to_be(timeout=5, url="https://dzen.ru/?yredirect=true")

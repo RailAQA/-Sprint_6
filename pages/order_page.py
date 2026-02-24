@@ -54,7 +54,7 @@ class OrderPage(BasePage):
     def choice_metro(self):
         element = self.get_locator(locator=self.UNDERGROUND_STATION_INPUT)
         element.click()
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.DROP_DOWN_OPTIONS))
+        self.wait_element_will_visible(locator=self.DROP_DOWN_OPTIONS, timeout=5)
         
         options = self.driver.find_elements(*self.DROP_DOWN_OPTIONS)
         undeground = random.choice(options)
@@ -64,7 +64,7 @@ class OrderPage(BasePage):
     def choice_rental_period(self):
         element = self.get_locator(locator=self.RENTAL_PERIOD_DROP_DOWN)
         element.click()
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.RENTAL_PERIOD_OPTIONS))
+        self.wait_element_will_visible(locator=self.RENTAL_PERIOD_OPTIONS, timeout=5)
 
         options = self.driver.find_elements(*self.RENTAL_PERIOD_OPTIONS)
         rental_period = random.choice(options)
