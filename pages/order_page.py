@@ -37,6 +37,7 @@ class OrderPage(BasePage):
         self.choice_metro()
         self.fill(locator=self.PHONE_NUMBER_INPUT, text=phone)
         
+    @allure.step("Клик по кнопке 'Далее' в форме с пользовательскими данными самоката")
     def click_next_button(self):
         self.click(locator=self.NEXT_BUTTON)
 
@@ -48,9 +49,11 @@ class OrderPage(BasePage):
         self.click(locator=self.SAMOKAT_COLOR_CHECKBOXES, nth=nth)
         self.fill(locator=self.CURRIER_COMMENT_INPUT, text=comment)
 
+    @allure.step("Кнопка 'Сделать заказ' в форме аренды самоката")
     def click_make_order(self):
         self.click(locator=self.MAKE_ORDER_BUTTON)
 
+    @allure.step("Выбор рандомного метро")
     def choice_metro(self):
         element = self.get_locator(locator=self.UNDERGROUND_STATION_INPUT)
         element.click()
@@ -61,6 +64,7 @@ class OrderPage(BasePage):
         self.scroll_to(locator=element)
         undeground.click()
 
+    @allure.step("Выбор рандомного срока аренды")
     def choice_rental_period(self):
         element = self.get_locator(locator=self.RENTAL_PERIOD_DROP_DOWN)
         element.click()
@@ -73,7 +77,7 @@ class OrderPage(BasePage):
 
     def hide_cookie_banner(self):
         with allure.step(
-            f"Скрытие баннер куки"
+            f"Скрытие баннера с куки"
             ):
             self.driver.execute_script("""
                 var button = document.getElementById('rcc-confirm-button');
@@ -81,12 +85,15 @@ class OrderPage(BasePage):
                 button.click();}
             """)
 
+    @allure.step("Проверка, что отобразилось окно успешного заказа")
     def check_visible_succesful_order_form(self):
         self.check_visible(locator=self.SUCCESFUL_ORDER_FORM_TITTLE)
         self.check_visible(locator=self.CHECK_STATUS_BUTTON)
 
+    @allure.step("Клик по кнопке 'Проверить статус заказа'")
     def click_check_status_button(self):
         self.click(locator=self.CHECK_STATUS_BUTTON)
 
+    @allure.step("Клик по кнопке 'Да' в форме аренды")
     def click_approve_order_button(self):
         self.click(locator=self.APPROVE_ORDER_BUTTON)
