@@ -31,14 +31,15 @@ class TestOrderPage:
         order_page.click_make_order()
         order_page.click_approve_order_button()
         order_page.check_visible_succesful_order_form()
-        order_page.click_check_status_button()
 
+    @allure.title("Переход на главную страницу через логотип Самоката")
     def test_samokat_logo_navigation(self, driver):
         order_page = OrderPage(driver=driver)
         order_page.visit(AppRoute.ORDER_PAGE)
         order_page.click_samokat_header_logo()
         order_page.check_current_url(url=AppRoute.HOME_PAGE)
 
+    @allure.title("Переход на главную страницу Дзена через логотип Яндекса")
     def test_yandex_logo_navigation(self, driver):
         home_page = HomePage(driver=driver)
         home_page.visit(AppRoute.HOME_PAGE)
